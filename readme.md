@@ -8,6 +8,7 @@
 * webpack loader
   * babel-loader
   * postcss-loader
+  * url-loader
 * webpack plugins
   * html-webpack-plugin
   * clean-webpack-plugin

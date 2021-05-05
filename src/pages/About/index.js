@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import './index.css';
 
 const About = () => {
+
     return (
-        <div className="from-purple-700">About page</div>
+        <div className="from-purple-700">
+            
+        </div>
     )
 }
 

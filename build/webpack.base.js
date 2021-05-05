@@ -9,7 +9,8 @@ module.exports = {
     entry: resolve(__dirname, "../", "index.js"),
     output: {
         path: resolve(__dirname, "../", "dist"),
-        filename: 'static/js/[name][contenthash:8].bundle.js',
+        assetModuleFilename: 'static/assets/[hash:8][ext][query]',
+        filename: 'static/js/[name][contenthash:8].bundle.js'
     },
     module: {
         rules: [
@@ -21,10 +22,25 @@ module.exports = {
                 test: /\.css$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    { loader: 'css-loader', options: { sourceMap: true } },
-                    { loader: 'postcss-loader', options: { sourceMap: true } },
+                    {
+                        loader: 'css-loader',
+                        // options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        // options: { sourceMap: true }
+                    },
                 ],
             },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 4 * 1024 // 4kb
+                    }
+                }
+            }
         ]
     },
     plugins: [
