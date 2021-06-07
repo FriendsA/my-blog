@@ -134,7 +134,7 @@ header ul {
     background: #4978ff;
     width     : 250px;
     min-height: 300px;
-    @apply relative my-0 mx-auto flex justify-center items-center;
+    @apply relative my-0 mx-auto flex justify-center items-center cursor-pointer;
 }
 
 .workBx .brand:hover {

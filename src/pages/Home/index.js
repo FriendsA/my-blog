@@ -16,13 +16,17 @@ import { ToastContainer, toast, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from '../../components/Spinner';
 import requestPost from '../../httpServer';
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
+
+    const history = useHistory();
 
     useEffect(() => {
         function scrollHandle() {
             const header = document.getElementById("header");
-            header.classList.toggle("stricky", window.scrollY > 0)
+            if (header)
+                header.classList.toggle("stricky", window.scrollY > 0)
         }
         window.addEventListener('scroll', scrollHandle)
         return () => window.removeEventListener("scroll", scrollHandle)
@@ -46,6 +50,10 @@ const Home = () => {
             draggable: true,
             progress: undefined,
         });
+    }
+
+    function goArticle(name) {
+        history.push({ pathname: "/article", state: { name } });
     }
 
     function sendMessage() {
@@ -196,20 +204,25 @@ const Home = () => {
                         <p>不定期更新文章，随笔。</p>
                     </div>
                     <div className="workBx">
-                        <div className="brand">
-                            <Link to={{ pathname: "/article", state: { name: "errorArticle" } }}><h2>前端异常处理</h2></Link>
+                        <div className="brand" onClick={goArticle.bind(this, "errorArticle")}>
+                            {/* <Link to={{ pathname: "/article", state: { name: "errorArticle" } }}><h2>前端异常处理</h2></Link> */}
+                            <a>前端异常处理</a>
                         </div>
-                        <div className="brand">
-                            <Link to={{ pathname: "/article", state: { name: "pieArticle" } }}><h2>canvas画饼状图</h2></Link>
+                        <div className="brand" onClick={goArticle.bind(this, "pieArticle")}>
+                            {/* <Link to={{ pathname: "/article", state: { name: "pieArticle" } }}><h2>canvas画饼状图</h2></Link> */}
+                            <a>canvas画饼状图</a>
                         </div>
-                        <div className="brand">
-                            <Link to={{ pathname: "/article", state: { name: "netResource" } }}><h2>JS网络请求和资源</h2></Link>
+                        <div className="brand" onClick={goArticle.bind(this, "netResource")}>
+                            {/* <Link to={{ pathname: "/article", state: { name: "netResource" } }}><h2>JS网络请求和资源</h2></Link> */}
+                            <a>JS网络请求和资源</a>
                         </div>
-                        <div className="brand">
-                            <Link to={{ pathname: "/article", state: { name: "netWork" } }}><h2>计算机网络</h2></Link>
+                        <div className="brand" onClick={goArticle.bind(this, "netWork")}>
+                            {/* <Link to={{ pathname: "/article", state: { name: "netWork" } }}><h2>计算机网络</h2></Link> */}
+                            <a>计算机网络</a>
                         </div>
-                        <div className="brand">
-                            <Link to={{ pathname: "/article", state: { name: "pm2" } }}><h2>PM2部署ts项目</h2></Link>
+                        <div className="brand" onClick={goArticle.bind(this, "pm2")}>
+                            {/* <Link to={{ pathname: "/article", state: { name: "pm2" } }}><h2>PM2部署ts项目</h2></Link> */}
+                            <a>PM2部署ts项目</a>
                         </div>
                         <div className="brand">
                             <a href="#"><h2>广告位招租</h2></a>

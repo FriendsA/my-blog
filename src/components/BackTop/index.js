@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import './index.css';
+let timer = null;
+let flag = true;
 
 const BackTop = () => {
 
     const [display, setDisplay] = useState(false);
 
     useEffect(() => {
-        console.log("listener")
         function scrollHandle() {
-            setTimeout(() => {
-                setDisplay(window.scrollY > 200)
+            timer = setTimeout(() => {
+                if (flag) {
+                    setDisplay(window.scrollY > 200)
+                }
             }, 200);
         }
         window.addEventListener("scroll", scrollHandle, true);
-        return window.removeEventListener("scroll", scrollHandle);
+        return () => {
+            window.removeEventListener("scroll", scrollHandle), true;
+            flag = false;
+            clearTimeout(timer);
+        };
     }, [])
 
     function backTopHandle() {
