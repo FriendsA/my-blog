@@ -217,6 +217,7 @@ header ul {
 }
 
 .contactForm .row100 input,
+.contactForm .row100 .submit,
 .contactForm .row100 textarea {
     border       : none;
     border-bottom: 1px solid #fff;
@@ -235,9 +236,10 @@ header ul {
 }
 
 
-.contactForm .row100 input[type="submit"] {
+.contactForm .row100 .submit {
     max-width     : 100px;
     letter-spacing: 2px;
+    margin        : 1.25rem auto;
     @apply bg-white text-black uppercase cursor-pointer font-medium;
 }
 
@@ -362,7 +364,7 @@ header ul {
         @apply text-2xl;
     }
 
-    h3{
+    h3 {
         @apply text-4xl;
     }
 }

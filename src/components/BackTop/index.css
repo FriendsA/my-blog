@@ -1,0 +1,51 @@
+.co-back-top {
+    height      : 40px;
+    width       : 40px;
+    border-color: #d2d2d2;
+    @apply fixed right-3 bottom-3 duration-200 border bg-white cursor-pointer rounded;
+}
+
+.co-back-top::before {
+    content         : '返回顶部';
+    position        : absolute;
+    width           : 100px;
+    background-color: #a0a4a7;
+    color           : #fff;
+    text-align      : center;
+    padding         : 10px;
+    line-height     : 1.2;
+    border-radius   : 6px;
+    z-index         : 1;
+    opacity         : 0;
+    transition      : opacity .6s;
+    left            : -125%;
+    margin-left     : -60px;
+    font-size       : 0.75em;
+    visibility      : hidden;
+}
+
+/* Tooltip arrow */
+.co-back-top:after {
+    border           : 5px solid transparent;
+    border-left-color: #a0a4a7;
+    content          : "";
+    left             : -8px;
+    top              : 50%;
+    margin-top       : -5px;
+    content          : "";
+    position         : absolute;
+    opacity          : 0;
+    transition       : opacity .6s;
+    visibility       : hidden;
+}
+
+.co-back-top:hover:before,
+.co-back-top:hover:after {
+    opacity   : 1;
+    visibility: visible;
+}
+
+.co-back-top:hover {
+    /* background-color: #76839b; */
+    background-color: #d3d3d3;
+}

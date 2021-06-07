@@ -1,6 +1,6 @@
 const resolve = require("path").resolve;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+// const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
@@ -10,7 +10,8 @@ module.exports = {
     output: {
         path: resolve(__dirname, "../", "dist"),
         assetModuleFilename: 'static/assets/[hash:8][ext][query]',
-        filename: 'static/js/[name][contenthash:8].bundle.js'
+        filename: 'static/js/[name].[contenthash:8].bundle.js',
+        clean: true,
     },
     module: {
         rules: [
@@ -33,7 +34,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|jpg|gif)$/i,
+                test: /\.(png|jpe?g|gif)$/i,
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
@@ -44,14 +45,29 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({ template: resolve(__dirname, "../", "public/index.html") }),
+        // new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: resolve(__dirname, "../", "public/index.html"),
+            favicon: resolve(__dirname, "../", "public/favicon.ico"),
+            inject: true,
+        }),
         new MiniCssExtractPlugin({
             filename: 'static/css/[name][contenthash:8].bundle.css'
         }),
     ],
     optimization: {
+        moduleIds: 'deterministic',
+        runtimeChunk: 'single',
         minimize: true,
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                },
+            },
+        },
         minimizer: [
             new TerserPlugin({
                 terserOptions: {
