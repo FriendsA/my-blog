@@ -224,8 +224,8 @@ const Home = () => {
                             {/* <Link to={{ pathname: "/article", state: { name: "pm2" } }}><h2>PM2部署ts项目</h2></Link> */}
                             <a>PM2部署ts项目</a>
                         </div>
-                        <div className="brand">
-                            <a href="#"><h2>广告位招租</h2></a>
+                        <div className="brand" onClick={goArticle.bind(this, "prototype")}>
+                            <a>JS继承</a>
                         </div>
                         <div className="brand">
                             <a href="#"><h2>广告位招租</h2></a>

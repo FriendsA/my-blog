@@ -3,9 +3,7 @@ import './app.css';
 import { Switch, Route } from 'react-router-dom';
 import Spinner from './components/Spinner';
 import Home from './pages/Home';
-// import Article from './pages/Article';
 const Article = React.lazy(() => import('./pages/Article'));
-// import Resume from './pages/Resume';
 const Resume = React.lazy(() =>  import('./pages/Resume'));
 const Blank = React.lazy(() => import('./pages/Blank'));
 
