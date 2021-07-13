@@ -16,8 +16,29 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
-                use: "babel-loader",
+                test: /\.(js|mjs|jsx|ts|tsx)$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: require.resolve('swc-loader'),  // you would put swc-loader
+                    options: {
+                        jsc: {
+                            parser: {
+                                syntax: "ecmascript",
+                                jsx: true,
+                                dynamicImport: true,
+                            },
+                            transform: {
+                                react: {
+                                    pragma: 'React.createElement',
+                                    pragmaFrag: 'React.Fragment',
+                                    throwIfNamespace: true,
+                                    development: false,
+                                    useBuiltins: false
+                                }
+                            }
+                        }
+                    }
+                },
             },
             {
                 test: /\.css$/i,
