@@ -1,0 +1,6 @@
+.spinner-content {
+    width  : 100vw;
+    height : 100vh;
+    z-index: 1001;
+    @apply flex justify-center items-center fixed top-0 left-0;
+}
