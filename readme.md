@@ -28,4 +28,4 @@
 + ts
 + jest
 + tslink
-+ redux
++ husky
