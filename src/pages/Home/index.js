@@ -2,7 +2,9 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <div className="from-purple-700">Home page</div>
+        <div className="text-purple-700">
+        Home page here
+        </div>
     )
 }
 

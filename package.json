@@ -9,18 +9,16 @@
     "react-router-dom": "^5.2.0"
   },
   "scripts": {
-    "start": "webpack serve --no-stats --port 3000 --open -c build/webpack.development.js",
+    "start": "webpack serve --progress --no-stats --hot --port 3000 --open -c build/webpack.development.js",
     "build": "NODE_ENV=production webpack --progress -c build/webpack.production.js",
     "build:ana": "NODE_ENV=production webpack --analyze -c build/webpack.production.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.0",
-    "@babel/preset-react": "^7.13.13",
     "autoprefixer": "^10.2.5",
-    "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.4",
     "css-minimizer-webpack-plugin": "^2.0.0",
+    "esbuild-loader": "^2.15.0",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",
     "postcss": "^8.2.13",
